@@ -9,8 +9,15 @@ module.exports = class SatelliteService {
     // rename errors to barrel errors to get around mongoose reserved word
     const satelliteData = {
       ...satellite,
-      barrels: satellite.barrels.map(barrel => ({ ...barrel, barrel_errors: barrel.errors }))
+      barrels: satellite.barrels.map(barrel => ({
+        ...barrel,
+        barrel_errors: barrel.errors
+      }))
     };
-    return Satellite.update(satelliteData, { upsert: true }).exec();
+    return Satellite.update(
+      { satellite_id: satelliteData.satellite_id },
+      satelliteData,
+      { upsert: true }
+    ).exec();
   }
 };

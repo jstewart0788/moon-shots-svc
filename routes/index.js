@@ -6,8 +6,8 @@ const satellite = new Satellite();
 
 router.get('/', async (req, res) => {
     try {
-        const state = await satellite.fetchAllSatellites()
-        res.json({ state });
+        const satellites = await satellite.fetchAllSatellites()
+        res.json({ satellites });
     }
     catch (err) {
         res.status(500).json({ msg: " Error Occured!", err })
