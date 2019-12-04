@@ -23,7 +23,7 @@ const schema = mongoose.Schema({
             type: String,
             require: true
           },
-          errors: []
+          barrel_errors: []
       }
   ]
 });
